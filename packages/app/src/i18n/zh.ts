@@ -28,6 +28,8 @@ export const dict = {
   "command.sidebar.toggle": "切换侧边栏",
 
   "command.project.open": "打开项目",
+  "command.project.previous": "上一个项目",
+  "command.project.next": "下一个项目",
 
   "command.provider.connect": "连接提供商",
 
@@ -603,6 +605,8 @@ export const dict = {
   "sidebar.project.recentSessions": "最近会话",
   "sidebar.project.viewAllSessions": "查看全部会话",
   "sidebar.project.clearNotifications": "清除通知",
+  "sidebar.empty.title": "没有打开的项目",
+  "sidebar.empty.description": "打开一个项目以开始使用",
 
   "app.name.desktop": "OpenCode Desktop",
 
