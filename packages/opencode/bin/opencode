@@ -5,6 +5,11 @@ const fs = require("fs")
 const path = require("path")
 const os = require("os")
 
+const scriptName = path.basename(process.argv[1])
+if (scriptName === "opencodezh" || scriptName === "opencodezh.exe") {
+  process.env.OPENCODE_LANG = "zh"
+}
+
 function run(target) {
   const result = childProcess.spawnSync(target, process.argv.slice(2), {
     stdio: "inherit",

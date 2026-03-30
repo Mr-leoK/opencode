@@ -35,6 +35,7 @@ import { JsonMigration } from "./storage/json-migration"
 import { Database } from "./storage/db"
 import { errorMessage } from "./util/error"
 import { PluginCommand } from "./cli/cmd/plug"
+import { t, isZh } from "./cli/i18n"
 
 process.on("unhandledRejection", (e) => {
   Log.Default.error("rejection", {
@@ -50,23 +51,23 @@ process.on("uncaughtException", (e) => {
 
 const cli = yargs(hideBin(process.argv))
   .parserConfiguration({ "populate--": true })
-  .scriptName("opencode")
+  .scriptName(isZh ? "opencodezh" : "opencode")
   .wrap(100)
-  .help("help", "show help")
+  .help("help", isZh ? "显示帮助" : "show help")
   .alias("help", "h")
-  .version("version", "show version number", Installation.VERSION)
+  .version("version", isZh ? "显示版本号" : "show version number", Installation.VERSION)
   .alias("version", "v")
   .option("print-logs", {
-    describe: "print logs to stderr",
+    describe: isZh ? "打印日志到 stderr" : "print logs to stderr",
     type: "boolean",
   })
   .option("log-level", {
-    describe: "log level",
+    describe: isZh ? "日志级别" : "log level",
     type: "string",
     choices: ["DEBUG", "INFO", "WARN", "ERROR"],
   })
   .option("pure", {
-    describe: "run without external plugins",
+    describe: isZh ? "不加载外部插件运行" : "run without external plugins",
     type: "boolean",
   })
   .middleware(async (opts) => {

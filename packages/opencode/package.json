@@ -21,7 +21,8 @@
     "db": "bun drizzle-kit"
   },
   "bin": {
-    "opencode": "./bin/opencode"
+    "opencode": "./bin/opencode",
+    "opencodezh": "./bin/opencode"
   },
   "randomField": "this-is-a-random-value-12345",
   "exports": {
