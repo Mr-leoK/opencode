@@ -69,6 +69,16 @@ export const zh: Dict = {
   "tui.ctrlP": "ctrl+p",
   "tui.finishingStartup": "正在完成启动...",
   "tui.loadingPlugins": "正在加载插件...",
+  "tui.shell": "终端",
+  "tui.interruptSession": "中断会话",
+  "tui.confirm": "确认",
+  "tui.cancel": "取消",
+  "tui.newSession": "新会话",
+  "tui.continue": "继续",
+  "tui.selectModel": "选择模型",
+  "tui.selectProvider": "选择提供商",
+  "tui.createSessionFailed": "创建会话失败",
+  "tui.openConsoleForDetails": "打开控制台查看详情",
 
   // Dialog
   "dialog.apiKey": "API 密钥",

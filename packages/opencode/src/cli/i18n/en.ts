@@ -67,6 +67,16 @@ export const en = {
   "tui.ctrlP": "ctrl+p",
   "tui.finishingStartup": "Finishing startup",
   "tui.loadingPlugins": "Loading plugins",
+  "tui.shell": "Shell",
+  "tui.interruptSession": "Interrupt session",
+  "tui.confirm": "Confirm",
+  "tui.cancel": "Cancel",
+  "tui.newSession": "New session",
+  "tui.continue": "Continue",
+  "tui.selectModel": "Select a model",
+  "tui.selectProvider": "Select provider",
+  "tui.createSessionFailed": "Creating a session failed",
+  "tui.openConsoleForDetails": "Open console for more details",
 
   // Dialog
   "dialog.apiKey": "API key",
