@@ -57,6 +57,33 @@ export const zh: Dict = {
   "tui.warning": "警告",
   "tui.info": "信息",
 
+  // TUI UI
+  "tui.askAnything": "有什么问题都可以问",
+  "tui.runCommand": "运行命令",
+  "tui.build": "构建",
+  "tui.miniMax": "MiniMax M2.5 免费",
+  "tui.openCodeZen": "OpenCode Zen",
+  "tui.agents": "智能体",
+  "tui.commands": "命令",
+  "tui.tab": "标签",
+  "tui.ctrlP": "ctrl+p",
+  "tui.finishingStartup": "正在完成启动...",
+  "tui.loadingPlugins": "正在加载插件...",
+
+  // Dialog
+  "dialog.apiKey": "API 密钥",
+  "dialog.enterApiKey": "输入 API 密钥",
+  "dialog.zen.description": "OpenCode Zen 让您可以通过单一 API 密钥以最便宜的价格访问所有最佳编程模型。",
+  "dialog.zen.url": "访问 https://opencode.ai/zen 获取密钥",
+  "dialog.go.description": "OpenCode Go 是每月 10 美元的订阅服务，提供可靠访问热门开源编程模型，额度充足。",
+  "dialog.go.url": "访问 https://opencode.ai/zen 启用 OpenCode Go",
+
+  // Home Tips
+  "tips.connect": "使用 {highlight}/connect{/highlight} 连接 OpenCode Zen 获取精选测试模型",
+  "tips.oauth": "OpenCode 自动处理需要认证的远程 MCP 服务器的 OAuth",
+  "tips.format": "OpenCode 使用 prettier、gofmt、ruff 等自动格式化文件",
+  "tips.lsp": "OpenCode 使用 LSP 服务器进行智能代码分析",
+
   // Prompts
   "prompt.selectModel": "选择模型",
   "prompt.selectProvider": "选择提供商",
@@ -68,6 +95,8 @@ export const zh: Dict = {
   "prompt.yes": "是",
   "prompt.no": "否",
   "prompt.ok": "确定",
+  "prompt.okCool": "好的！",
+  "prompt.letsGo": "开始吧！",
 
   // Messages
   "msg.connected": "已连接",
