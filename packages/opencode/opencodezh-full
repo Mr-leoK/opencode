@@ -1,0 +1,44 @@
+#!/bin/bash
+# OpenCode 中文版启动脚本 (完整版 - 同时启动后端和前端)
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR"
+
+echo "启动 OpenCode 中文版..."
+
+# 设置中文语言
+export OPENCODE_LANG=zh
+
+# 后端端口
+BACKEND_PORT=4096
+
+# 前端端口  
+FRONTEND_PORT=4444
+
+# 启动后端 (在后台)
+echo "启动后端服务..."
+/home/wula/.bun/bin/bun run --conditions=browser ./src/index.ts serve --port $BACKEND_PORT &
+BACKEND_PID=$!
+
+# 等待后端启动
+sleep 3
+
+# 启动前端 (在后台)
+echo "启动前端界面..."
+cd ../app
+/home/wula/.bun/bin/bun dev -- --port $FRONTEND_PORT &
+FRONTEND_PID=$!
+
+echo ""
+echo "========================================"
+echo "OpenCode 中文版已启动!"
+echo "后端: http://localhost:$BACKEND_PORT"
+echo "前端: http://localhost:$FRONTEND_PORT"
+echo "========================================"
+echo ""
+echo "按 Ctrl+C 停止服务"
+
+# 等待用户中断
+trap "kill $BACKEND_PID $FRONTEND_PID 2>/dev/null; exit" INT TERM
+
+wait
