@@ -1,0 +1,10 @@
+#!/bin/bash
+# OpenCode 英文版启动脚本 (开发环境用)
+
+cd "$(dirname "$0")"
+
+# 英文语言 (默认)
+export OPENCODE_LANG=en
+
+# 使用 bun 运行
+/home/wula/.bun/bin/bun run dev "$@"
