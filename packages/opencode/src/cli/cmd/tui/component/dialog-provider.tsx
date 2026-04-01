@@ -56,7 +56,7 @@ export function createDialogProviderOptions() {
               dialog.replace(
                 () => (
                   <DialogSelect
-                    title="Select auth method"
+                    title={t("tui.selectAuthMethod")}
                     options={methods.map((x, index) => ({
                       title: x.label,
                       value: index,

@@ -357,7 +357,7 @@ export function Session() {
   const command = useCommandDialog()
   command.register(() => [
     {
-      title: session()?.share?.url ? "Copy share link" : "Share session",
+      title: session()?.share?.url ? t("tui.copyShareLink") : t("tui.shareSession"),
       value: "session.share",
       suggested: route.type === "session",
       keybind: "session_share",
@@ -369,8 +369,8 @@ export function Session() {
       onSelect: async (dialog) => {
         const copy = (url: string) =>
           Clipboard.copy(url)
-            .then(() => toast.show({ message: "Share URL copied to clipboard!", variant: "success" }))
-            .catch(() => toast.show({ message: "Failed to copy URL to clipboard", variant: "error" }))
+            .then(() => toast.show({ message: t("tui.shareUrlCopied"), variant: "success" }))
+            .catch(() => toast.show({ message: t("tui.failedToCopy"), variant: "error" }))
         const url = session()?.share?.url
         if (url) {
           await copy(url)
@@ -384,7 +384,7 @@ export function Session() {
           .then((res) => copy(res.data!.share!.url))
           .catch((error) => {
             toast.show({
-              message: error instanceof Error ? error.message : "Failed to share session",
+              message: error instanceof Error ? error.message : t("tui.failedToShare"),
               variant: "error",
             })
           })
@@ -492,7 +492,7 @@ export function Session() {
           .then(() => toast.show({ message: "Session unshared successfully", variant: "success" }))
           .catch((error) => {
             toast.show({
-              message: error instanceof Error ? error.message : "Failed to unshare session",
+              message: error instanceof Error ? error.message : t("tui.failedToUnshare"),
               variant: "error",
             })
           })
@@ -819,7 +819,7 @@ export function Session() {
 
         Clipboard.copy(text)
           .then(() => toast.show({ message: "Message copied to clipboard!", variant: "success" }))
-          .catch(() => toast.show({ message: "Failed to copy to clipboard", variant: "error" }))
+          .catch(() => toast.show({ message: t("tui.failedToCopy"), variant: "error" }))
         dialog.clear()
       },
     },
@@ -847,7 +847,7 @@ export function Session() {
           await Clipboard.copy(transcript)
           toast.show({ message: "Session transcript copied to clipboard!", variant: "success" })
         } catch (error) {
-          toast.show({ message: "Failed to copy session transcript", variant: "error" })
+          toast.show({ message: t("tui.failedToCopyTranscript"), variant: "error" })
         }
         dialog.clear()
       },
@@ -908,7 +908,7 @@ export function Session() {
             toast.show({ message: `Session exported to ${filename}`, variant: "success" })
           }
         } catch (error) {
-          toast.show({ message: "Failed to export session", variant: "error" })
+          toast.show({ message: t("tui.failedToExport"), variant: "error" })
         }
         dialog.clear()
       },
