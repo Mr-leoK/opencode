@@ -12,6 +12,7 @@ import { useKV } from "../../context/kv"
 import { createDebouncedSignal } from "../../util/signal"
 import { Spinner } from "../spinner"
 import { useToast } from "../../ui/toast"
+import { t } from "../../../../i18n"
 
 export function DialogSessionList(props: { workspaceID?: string; localOnly?: boolean } = {}) {
   const dialog = useDialog()
@@ -120,7 +121,7 @@ export function DialogSessionList(props: { workspaceID?: string; localOnly?: boo
               setToDelete(undefined)
               if (!deleted) {
                 toast.show({
-                  message: "Failed to delete session",
+                  message: t("tui.failedToDeleteSession"),
                   variant: "error",
                 })
                 return

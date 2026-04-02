@@ -1,4 +1,13 @@
-import { BoxRenderable, TextareaRenderable, MouseEvent, PasteEvent, decodePasteBytes, t, dim, fg } from "@opentui/core"
+import {
+  BoxRenderable,
+  TextareaRenderable,
+  MouseEvent,
+  PasteEvent,
+  decodePasteBytes,
+  t as tOpen,
+  dim,
+  fg,
+} from "@opentui/core"
 import { createEffect, createMemo, type JSX, onMount, createSignal, onCleanup, on, Show, Switch, Match } from "solid-js"
 import "opentui-spinner/solid"
 import path from "path"
@@ -35,6 +44,9 @@ import { useToast } from "../../ui/toast"
 import { useKV } from "../../context/kv"
 import { useTextareaKeybindings } from "../textarea-keybindings"
 import { DialogSkill } from "../dialog-skill"
+import { t as i18nT } from "../../../../i18n"
+
+const t = i18nT
 
 export type PromptProps = {
   sessionID?: string
@@ -207,7 +219,7 @@ export function Prompt(props: PromptProps) {
       {
         title: "Clear prompt",
         value: "prompt.clear",
-        category: "Prompt",
+        category: t("tui.prompt"),
         hidden: true,
         onSelect: (dialog) => {
           input.extmarks.clear()
@@ -219,7 +231,7 @@ export function Prompt(props: PromptProps) {
         title: "Submit prompt",
         value: "prompt.submit",
         keybind: "input_submit",
-        category: "Prompt",
+        category: t("tui.prompt"),
         hidden: true,
         onSelect: (dialog) => {
           if (!input.focused) return
@@ -231,7 +243,7 @@ export function Prompt(props: PromptProps) {
         title: "Paste",
         value: "prompt.paste",
         keybind: "input_paste",
-        category: "Prompt",
+        category: t("tui.prompt"),
         hidden: true,
         onSelect: async () => {
           const content = await Clipboard.read()
@@ -245,7 +257,7 @@ export function Prompt(props: PromptProps) {
         },
       },
       {
-        title: "Interrupt session",
+        title: t("tui.interruptSession"),
         value: "session.interrupt",
         keybind: "session_interrupt",
         category: "Session",
@@ -364,9 +376,9 @@ export function Prompt(props: PromptProps) {
         },
       },
       {
-        title: "Skills",
+        title: t("tui.skills"),
         value: "prompt.skills",
-        category: "Prompt",
+        category: t("tui.prompt"),
         slash: {
           name: "skills",
         },
@@ -522,7 +534,7 @@ export function Prompt(props: PromptProps) {
     {
       title: "Stash prompt",
       value: "prompt.stash",
-      category: "Prompt",
+      category: t("tui.prompt"),
       enabled: !!store.prompt.input,
       onSelect: (dialog) => {
         if (!store.prompt.input) return
@@ -540,7 +552,7 @@ export function Prompt(props: PromptProps) {
     {
       title: "Stash pop",
       value: "prompt.stash.pop",
-      category: "Prompt",
+      category: t("tui.prompt"),
       enabled: stash.list().length > 0,
       onSelect: (dialog) => {
         const entry = stash.pop()
@@ -556,7 +568,7 @@ export function Prompt(props: PromptProps) {
     {
       title: "Stash list",
       value: "prompt.stash.list",
-      category: "Prompt",
+      category: t("tui.prompt"),
       enabled: stash.list().length > 0,
       onSelect: (dialog) => {
         dialog.replace(() => (
@@ -595,10 +607,10 @@ export function Prompt(props: PromptProps) {
       })
 
       if (res.error) {
-        console.log("Creating a session failed:", res.error)
+        console.log(t("tui.createSessionFailed") + ":", res.error)
 
         toast.show({
-          message: "Creating a session failed. Open console for more details.",
+          message: t("tui.createSessionFailed") + ". " + t("tui.openConsoleForDetails"),
           variant: "error",
         })
 
@@ -814,10 +826,10 @@ export function Prompt(props: PromptProps) {
     if (store.mode === "shell") {
       if (!shell().length) return undefined
       const example = shell()[store.placeholder % shell().length]
-      return `Run a command... "${example}"`
+      return `${t("tui.runCommand")} "${example}"`
     }
     if (!list().length) return undefined
-    return `Ask anything... "${list()[store.placeholder % list().length]}"`
+    return `${t("tui.askAnything")} "${list()[store.placeholder % list().length]}"`
   })
 
   const spinnerDef = createMemo(() => {
@@ -1062,7 +1074,7 @@ export function Prompt(props: PromptProps) {
             />
             <box flexDirection="row" flexShrink={0} paddingTop={1} gap={1}>
               <text fg={highlight()}>
-                {store.mode === "shell" ? "Shell" : Locale.titlecase(local.agent.current().name)}{" "}
+                {store.mode === "shell" ? t("tui.shell") : Locale.titlecase(local.agent.current().name)}{" "}
               </text>
               <Show when={store.mode === "normal"}>
                 <box flexDirection="row" gap={1}>

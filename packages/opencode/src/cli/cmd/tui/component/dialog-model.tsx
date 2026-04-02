@@ -8,6 +8,7 @@ import { createDialogProviderOptions, DialogProvider } from "./dialog-provider"
 import { DialogVariant } from "./dialog-variant"
 import { useKeybind } from "../context/keybind"
 import * as fuzzysort from "fuzzysort"
+import { t } from "../../../i18n"
 
 export function useConnected() {
   const sync = useSync()
@@ -49,7 +50,7 @@ export function DialogModel(props: { providerID?: string }) {
             description: provider.name,
             category,
             disabled: provider.id === "opencode" && model.id.includes("-nano"),
-            footer: model.cost?.input === 0 && provider.id === "opencode" ? "Free" : undefined,
+            footer: model.cost?.input === 0 && provider.id === "opencode" ? t("tui.free") : undefined,
             onSelect: () => {
               onSelect(provider.id, model.id)
             },
@@ -58,12 +59,12 @@ export function DialogModel(props: { providerID?: string }) {
       })
     }
 
-    const favoriteOptions = toOptions(favorites, "Favorites")
+    const favoriteOptions = toOptions(favorites, t("tui.favorites"))
     const recentOptions = toOptions(
       recents.filter(
         (item) => !favorites.some((fav) => fav.providerID === item.providerID && fav.modelID === item.modelID),
       ),
-      "Recent",
+      t("tui.recent"),
     )
 
     const providerOptions = pipe(
@@ -86,7 +87,7 @@ export function DialogModel(props: { providerID?: string }) {
               : undefined,
             category: connected() ? provider.name : undefined,
             disabled: provider.id === "opencode" && model.includes("-nano"),
-            footer: info.cost?.input === 0 && provider.id === "opencode" ? "Free" : undefined,
+            footer: info.cost?.input === 0 && provider.id === "opencode" ? t("tui.free") : undefined,
             onSelect() {
               onSelect(provider.id, model)
             },
@@ -132,7 +133,7 @@ export function DialogModel(props: { providerID?: string }) {
     props.providerID ? sync.data.provider.find((x) => x.id === props.providerID) : null,
   )
 
-  const title = createMemo(() => provider()?.name ?? "Select model")
+  const title = createMemo(() => provider()?.name ?? t("tui.selectModel"))
 
   function onSelect(providerID: string, modelID: string) {
     local.model.set({ providerID, modelID }, { recent: true })

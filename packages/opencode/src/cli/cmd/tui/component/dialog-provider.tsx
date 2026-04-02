@@ -13,6 +13,7 @@ import { DialogModel } from "./dialog-model"
 import { useKeyboard } from "@opentui/solid"
 import { Clipboard } from "@tui/util/clipboard"
 import { useToast } from "../ui/toast"
+import { t } from "../../../i18n"
 
 const PROVIDER_PRIORITY: Record<string, number> = {
   opencode: 0,
@@ -36,12 +37,12 @@ export function createDialogProviderOptions() {
         title: provider.name,
         value: provider.id,
         description: {
-          opencode: "(Recommended)",
-          anthropic: "(API key)",
-          openai: "(ChatGPT Plus/Pro or API key)",
-          "opencode-go": "Low cost subscription for everyone",
+          opencode: t("tui.recommended"),
+          anthropic: t("tui.apiKey"),
+          openai: t("tui.chatGptPlusPro"),
+          "opencode-go": t("tui.lowCostSubscription"),
         }[provider.id],
-        category: provider.id in PROVIDER_PRIORITY ? "Popular" : "Other",
+        category: provider.id in PROVIDER_PRIORITY ? t("tui.popular") : t("tui.other"),
         async onSelect() {
           const methods = sync.data.provider_auth[provider.id] ?? [
             {
@@ -55,7 +56,7 @@ export function createDialogProviderOptions() {
               dialog.replace(
                 () => (
                   <DialogSelect
-                    title="Select auth method"
+                    title={t("tui.selectAuthMethod")}
                     options={methods.map((x, index) => ({
                       title: x.label,
                       value: index,
@@ -234,28 +235,22 @@ function ApiMethod(props: ApiMethodProps) {
   return (
     <DialogPrompt
       title={props.title}
-      placeholder="API key"
+      placeholder={t("dialog.enterApiKey")}
       description={
         {
           opencode: (
             <box gap={1}>
-              <text fg={theme.textMuted}>
-                OpenCode Zen gives you access to all the best coding models at the cheapest prices with a single API
-                key.
-              </text>
+              <text fg={theme.textMuted}>{t("dialog.zen.description")}</text>
               <text fg={theme.text}>
-                Go to <span style={{ fg: theme.primary }}>https://opencode.ai/zen</span> to get a key
+                <span style={{ fg: theme.primary }}>{t("dialog.zen.url")}</span>
               </text>
             </box>
           ),
           "opencode-go": (
             <box gap={1}>
-              <text fg={theme.textMuted}>
-                OpenCode Go is a $10 per month subscription that provides reliable access to popular open coding models
-                with generous usage limits.
-              </text>
+              <text fg={theme.textMuted}>{t("dialog.go.description")}</text>
               <text fg={theme.text}>
-                Go to <span style={{ fg: theme.primary }}>https://opencode.ai/zen</span> and enable OpenCode Go
+                <span style={{ fg: theme.primary }}>{t("dialog.go.url")}</span>
               </text>
             </box>
           ),

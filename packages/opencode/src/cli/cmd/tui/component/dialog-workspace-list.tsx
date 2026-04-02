@@ -9,6 +9,7 @@ import { useToast } from "../ui/toast"
 import { useKeybind } from "../context/keybind"
 import { DialogSessionList } from "./workspace/dialog-session-list"
 import { setTimeout as sleep } from "node:timers/promises"
+import { t } from "../../../i18n"
 
 function scoped(sdk: ReturnType<typeof useSDK>, sync: ReturnType<typeof useSync>, workspaceID?: string) {
   return createOpencodeClient({
@@ -54,7 +55,7 @@ async function openWorkspace(input: {
     const result = await client.session.create({ workspaceID: input.workspaceID }).catch(() => undefined)
     if (!result) {
       input.toast.show({
-        message: "Failed to open workspace",
+        message: t("tui.failedToOpenWorkspace"),
         variant: "error",
       })
       return
@@ -65,7 +66,7 @@ async function openWorkspace(input: {
     }
     if (!result.data) {
       input.toast.show({
-        message: "Failed to open workspace",
+        message: t("tui.failedToOpenWorkspace"),
         variant: "error",
       })
       return
@@ -124,7 +125,7 @@ function DialogWorkspaceCreate(props: { onSelect: (workspaceID: string) => Promi
     if (!workspace) {
       setCreating(undefined)
       toast.show({
-        message: "Failed to create workspace",
+        message: t("tui.failedToCreateWorkspace"),
         variant: "error",
       })
       return
@@ -301,7 +302,7 @@ export function DialogWorkspaceList() {
             setToDelete(undefined)
             if (result?.error) {
               toast.show({
-                message: "Failed to delete workspace",
+                message: t("tui.failedToDeleteWorkspace"),
                 variant: "error",
               })
               return

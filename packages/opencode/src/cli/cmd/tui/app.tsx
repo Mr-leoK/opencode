@@ -59,6 +59,7 @@ import { TuiConfigProvider, useTuiConfig } from "./context/tui-config"
 import { TuiConfig } from "@/config/tui"
 import { createTuiApi, TuiPluginRuntime, type RouteMap } from "./plugin"
 import { FormatError, FormatUnknownError } from "@/cli/error"
+import { t } from "../../i18n"
 
 async function getTerminalBackgroundColor(): Promise<"dark" | "light"> {
   // can't set raw mode if not a TTY
@@ -343,14 +344,14 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
     if (!terminalTitleEnabled() || Flag.OPENCODE_DISABLE_TERMINAL_TITLE) return
 
     if (route.data.type === "home") {
-      renderer.setTerminalTitle("OpenCode")
+      renderer.setTerminalTitle(t("tui.openCode"))
       return
     }
 
     if (route.data.type === "session") {
       const session = sync.session.get(route.data.sessionID)
       if (!session || SessionApi.isDefaultTitle(session.title)) {
-        renderer.setTerminalTitle("OpenCode")
+        renderer.setTerminalTitle(t("tui.openCode"))
         return
       }
 
@@ -402,7 +403,7 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
           if (result.data?.id) {
             route.navigate({ type: "session", sessionID: result.data.id })
           } else {
-            toast.show({ message: "Failed to fork session", variant: "error" })
+            toast.show({ message: t("tui.failedToFork"), variant: "error" })
           }
         })
       } else {
@@ -422,7 +423,7 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       if (result.data?.id) {
         route.navigate({ type: "session", sessionID: result.data.id })
       } else {
-        toast.show({ message: "Failed to fork session", variant: "error" })
+        toast.show({ message: t("tui.failedToFork"), variant: "error" })
       }
     })
   })
@@ -441,10 +442,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
   const connected = useConnected()
   command.register(() => [
     {
-      title: "Switch session",
+      title: t("tui.switchSession"),
       value: "session.list",
       keybind: "session_list",
-      category: "Session",
+      category: t("tui.categorySession"),
       suggested: sync.data.session.length > 0,
       slash: {
         name: "sessions",
@@ -457,9 +458,9 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
     ...(Flag.OPENCODE_EXPERIMENTAL_WORKSPACES
       ? [
           {
-            title: "Manage workspaces",
+            title: t("tui.manageWorkspaces"),
             value: "workspace.list",
-            category: "Workspace",
+            category: t("tui.categoryWorkspace"),
             suggested: true,
             slash: {
               name: "workspaces",
@@ -471,11 +472,11 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
         ]
       : []),
     {
-      title: "New session",
+      title: t("tui.newSession"),
       suggested: route.data.type === "session",
       value: "session.new",
       keybind: "session_new",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "new",
         aliases: ["clear"],
@@ -495,11 +496,11 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Switch model",
+      title: t("tui.switchModel"),
       value: "model.list",
       keybind: "model_list",
       suggested: true,
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       slash: {
         name: "models",
       },
@@ -508,50 +509,50 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Model cycle",
+      title: t("tui.modelCycle"),
       value: "model.cycle_recent",
       keybind: "model_cycle_recent",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.model.cycle(1)
       },
     },
     {
-      title: "Model cycle reverse",
+      title: t("tui.modelCycleReverse"),
       value: "model.cycle_recent_reverse",
       keybind: "model_cycle_recent_reverse",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.model.cycle(-1)
       },
     },
     {
-      title: "Favorite cycle",
+      title: t("tui.favoriteCycle"),
       value: "model.cycle_favorite",
       keybind: "model_cycle_favorite",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.model.cycleFavorite(1)
       },
     },
     {
-      title: "Favorite cycle reverse",
+      title: t("tui.favoriteCycleReverse"),
       value: "model.cycle_favorite_reverse",
       keybind: "model_cycle_favorite_reverse",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.model.cycleFavorite(-1)
       },
     },
     {
-      title: "Switch agent",
+      title: t("tui.switchAgent"),
       value: "agent.list",
       keybind: "agent_list",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       slash: {
         name: "agents",
       },
@@ -560,9 +561,9 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Toggle MCPs",
+      title: t("tui.toggleMCPs"),
       value: "mcp.list",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       slash: {
         name: "mcps",
       },
@@ -571,28 +572,28 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Agent cycle",
+      title: t("tui.agentCycle"),
       value: "agent.cycle",
       keybind: "agent_cycle",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.agent.move(1)
       },
     },
     {
-      title: "Variant cycle",
+      title: t("tui.cycleVariant"),
       value: "variant.cycle",
       keybind: "variant_cycle",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       onSelect: () => {
         local.model.variant.cycle()
       },
     },
     {
-      title: "Switch model variant",
+      title: t("tui.switchModelVariant"),
       value: "variant.list",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: local.model.variant.list().length === 0,
       slash: {
         name: "variants",
@@ -602,17 +603,17 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Agent cycle reverse",
+      title: t("tui.agentCycleReverse"),
       value: "agent.cycle.reverse",
       keybind: "agent_cycle_reverse",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.agent.move(-1)
       },
     },
     {
-      title: "Connect provider",
+      title: t("tui.connectProvider"),
       value: "provider.connect",
       suggested: !connected(),
       slash: {
@@ -621,10 +622,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       onSelect: () => {
         dialog.replace(() => <DialogProviderList />)
       },
-      category: "Provider",
+      category: t("tui.categoryProvider"),
     },
     {
-      title: "View status",
+      title: t("tui.viewStatus"),
       keybind: "status_view",
       value: "opencode.status",
       slash: {
@@ -633,10 +634,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       onSelect: () => {
         dialog.replace(() => <DialogStatus />)
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Switch theme",
+      title: t("tui.switchTheme"),
       value: "theme.switch",
       keybind: "theme_list",
       slash: {
@@ -645,29 +646,29 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       onSelect: () => {
         dialog.replace(() => <DialogThemeList />)
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Toggle Theme Mode",
+      title: t("tui.toggleThemeMode"),
       value: "theme.switch_mode",
       onSelect: (dialog) => {
         setMode(mode() === "dark" ? "light" : "dark")
         dialog.clear()
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: locked() ? "Unlock Theme Mode" : "Lock Theme Mode",
+      title: locked() ? t("tui.unlockThemeMode") : t("tui.lockThemeMode"),
       value: "theme.mode.lock",
       onSelect: (dialog) => {
         if (locked()) unlock()
         else lock()
         dialog.clear()
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Help",
+      title: t("tui.help"),
       value: "help.show",
       slash: {
         name: "help",
@@ -675,30 +676,30 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       onSelect: () => {
         dialog.replace(() => <DialogHelp />)
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Open docs",
+      title: t("tui.openDocs"),
       value: "docs.open",
       onSelect: () => {
         open("https://opencode.ai/docs").catch(() => {})
         dialog.clear()
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Exit the app",
+      title: t("tui.exitApp"),
       value: "app.exit",
       slash: {
         name: "exit",
         aliases: ["quit", "q"],
       },
       onSelect: () => exit(),
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Toggle debug panel",
-      category: "System",
+      title: t("tui.toggleDebugPanel"),
+      category: t("tui.categorySystem"),
       value: "app.debug",
       onSelect: (dialog) => {
         renderer.toggleDebugOverlay()
@@ -706,8 +707,8 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Toggle console",
-      category: "System",
+      title: t("tui.toggleConsole"),
+      category: t("tui.categorySystem"),
       value: "app.console",
       onSelect: (dialog) => {
         renderer.console.toggle()
@@ -715,8 +716,8 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Write heap snapshot",
-      category: "System",
+      title: t("tui.writeHeapSnapshot"),
+      category: t("tui.categorySystem"),
       value: "app.heap_snapshot",
       onSelect: async (dialog) => {
         const files = await props.onSnapshot?.()
@@ -729,10 +730,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Suspend terminal",
+      title: t("tui.suspendTerminal"),
       value: "terminal.suspend",
       keybind: "terminal_suspend",
-      category: "System",
+      category: t("tui.categorySystem"),
       hidden: true,
       onSelect: () => {
         process.once("SIGCONT", () => {
@@ -745,10 +746,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: terminalTitleEnabled() ? "Disable terminal title" : "Enable terminal title",
+      title: terminalTitleEnabled() ? t("tui.disableTerminalTitle") : t("tui.enableTerminalTitle"),
       value: "terminal.title.toggle",
       keybind: "terminal_title_toggle",
-      category: "System",
+      category: t("tui.categorySystem"),
       onSelect: (dialog) => {
         setTerminalTitleEnabled((prev) => {
           const next = !prev
@@ -760,18 +761,18 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: kv.get("animations_enabled", true) ? "Disable animations" : "Enable animations",
+      title: kv.get("animations_enabled", true) ? t("tui.disableAnimations") : t("tui.enableAnimations"),
       value: "app.toggle.animations",
-      category: "System",
+      category: t("tui.categorySystem"),
       onSelect: (dialog) => {
         kv.set("animations_enabled", !kv.get("animations_enabled", true))
         dialog.clear()
       },
     },
     {
-      title: kv.get("diff_wrap_mode", "word") === "word" ? "Disable diff wrapping" : "Enable diff wrapping",
+      title: kv.get("diff_wrap_mode", "word") === "word" ? t("tui.disableDiffWrapping") : t("tui.enableDiffWrapping"),
       value: "app.toggle.diffwrap",
-      category: "System",
+      category: t("tui.categorySystem"),
       onSelect: (dialog) => {
         const current = kv.get("diff_wrap_mode", "word")
         kv.set("diff_wrap_mode", current === "word" ? "none" : "word")
