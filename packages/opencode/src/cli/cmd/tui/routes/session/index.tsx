@@ -489,7 +489,7 @@ export function Session() {
           .unshare({
             sessionID: route.sessionID,
           })
-          .then(() => toast.show({ message: "Session unshared successfully", variant: "success" }))
+          .then(() => toast.show({ message: t("tui.sessionUnshared"), variant: "success" }))
           .catch((error) => {
             toast.show({
               message: error instanceof Error ? error.message : t("tui.failedToUnshare"),
@@ -845,7 +845,7 @@ export function Session() {
             },
           )
           await Clipboard.copy(transcript)
-          toast.show({ message: "Session transcript copied to clipboard!", variant: "success" })
+          toast.show({ message: t("tui.transcriptCopied"), variant: "success" })
         } catch (error) {
           toast.show({ message: t("tui.failedToCopyTranscript"), variant: "error" })
         }

@@ -37,12 +37,12 @@ export function createDialogProviderOptions() {
         title: provider.name,
         value: provider.id,
         description: {
-          opencode: "(Recommended)",
-          anthropic: "(API key)",
-          openai: "(ChatGPT Plus/Pro or API key)",
-          "opencode-go": "Low cost subscription for everyone",
+          opencode: t("tui.recommended"),
+          anthropic: t("tui.apiKey"),
+          openai: t("tui.chatGptPlusPro"),
+          "opencode-go": t("tui.lowCostSubscription"),
         }[provider.id],
-        category: provider.id in PROVIDER_PRIORITY ? "Popular" : "Other",
+        category: provider.id in PROVIDER_PRIORITY ? t("tui.popular") : t("tui.other"),
         async onSelect() {
           const methods = sync.data.provider_auth[provider.id] ?? [
             {
