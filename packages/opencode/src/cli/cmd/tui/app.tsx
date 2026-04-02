@@ -572,10 +572,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Agent cycle",
+      title: t("tui.agentCycle"),
       value: "agent.cycle",
       keybind: "agent_cycle",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.agent.move(1)
@@ -603,10 +603,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Agent cycle reverse",
+      title: t("tui.agentCycleReverse"),
       value: "agent.cycle.reverse",
       keybind: "agent_cycle_reverse",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.agent.move(-1)
@@ -634,10 +634,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       onSelect: () => {
         dialog.replace(() => <DialogStatus />)
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Switch theme",
+      title: t("tui.switchTheme"),
       value: "theme.switch",
       keybind: "theme_list",
       slash: {
@@ -646,29 +646,29 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       onSelect: () => {
         dialog.replace(() => <DialogThemeList />)
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Toggle Theme Mode",
+      title: t("tui.toggleThemeMode"),
       value: "theme.switch_mode",
       onSelect: (dialog) => {
         setMode(mode() === "dark" ? "light" : "dark")
         dialog.clear()
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: locked() ? "Unlock Theme Mode" : "Lock Theme Mode",
+      title: locked() ? t("tui.unlockThemeMode") : t("tui.lockThemeMode"),
       value: "theme.mode.lock",
       onSelect: (dialog) => {
         if (locked()) unlock()
         else lock()
         dialog.clear()
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Help",
+      title: t("tui.help"),
       value: "help.show",
       slash: {
         name: "help",
@@ -676,30 +676,30 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       onSelect: () => {
         dialog.replace(() => <DialogHelp />)
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Open docs",
+      title: t("tui.openDocs"),
       value: "docs.open",
       onSelect: () => {
         open("https://opencode.ai/docs").catch(() => {})
         dialog.clear()
       },
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Exit the app",
+      title: t("tui.exitApp"),
       value: "app.exit",
       slash: {
         name: "exit",
         aliases: ["quit", "q"],
       },
       onSelect: () => exit(),
-      category: "System",
+      category: t("tui.categorySystem"),
     },
     {
-      title: "Toggle debug panel",
-      category: "System",
+      title: t("tui.toggleDebugPanel"),
+      category: t("tui.categorySystem"),
       value: "app.debug",
       onSelect: (dialog) => {
         renderer.toggleDebugOverlay()
@@ -707,8 +707,8 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Toggle console",
-      category: "System",
+      title: t("tui.toggleConsole"),
+      category: t("tui.categorySystem"),
       value: "app.console",
       onSelect: (dialog) => {
         renderer.console.toggle()
@@ -716,8 +716,8 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Write heap snapshot",
-      category: "System",
+      title: t("tui.writeHeapSnapshot"),
+      category: t("tui.categorySystem"),
       value: "app.heap_snapshot",
       onSelect: async (dialog) => {
         const files = await props.onSnapshot?.()
@@ -730,10 +730,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Suspend terminal",
+      title: t("tui.suspendTerminal"),
       value: "terminal.suspend",
       keybind: "terminal_suspend",
-      category: "System",
+      category: t("tui.categorySystem"),
       hidden: true,
       onSelect: () => {
         process.once("SIGCONT", () => {
@@ -746,10 +746,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: terminalTitleEnabled() ? "Disable terminal title" : "Enable terminal title",
+      title: terminalTitleEnabled() ? t("tui.disableTerminalTitle") : t("tui.enableTerminalTitle"),
       value: "terminal.title.toggle",
       keybind: "terminal_title_toggle",
-      category: "System",
+      category: t("tui.categorySystem"),
       onSelect: (dialog) => {
         setTerminalTitleEnabled((prev) => {
           const next = !prev
@@ -761,18 +761,18 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: kv.get("animations_enabled", true) ? "Disable animations" : "Enable animations",
+      title: kv.get("animations_enabled", true) ? t("tui.disableAnimations") : t("tui.enableAnimations"),
       value: "app.toggle.animations",
-      category: "System",
+      category: t("tui.categorySystem"),
       onSelect: (dialog) => {
         kv.set("animations_enabled", !kv.get("animations_enabled", true))
         dialog.clear()
       },
     },
     {
-      title: kv.get("diff_wrap_mode", "word") === "word" ? "Disable diff wrapping" : "Enable diff wrapping",
+      title: kv.get("diff_wrap_mode", "word") === "word" ? t("tui.disableDiffWrapping") : t("tui.enableDiffWrapping"),
       value: "app.toggle.diffwrap",
-      category: "System",
+      category: t("tui.categorySystem"),
       onSelect: (dialog) => {
         const current = kv.get("diff_wrap_mode", "word")
         kv.set("diff_wrap_mode", current === "word" ? "none" : "word")

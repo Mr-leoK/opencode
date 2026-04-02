@@ -361,7 +361,7 @@ export function Session() {
       value: "session.share",
       suggested: route.type === "session",
       keybind: "session_share",
-      category: "Session",
+      category: t("tui.categorySession"),
       enabled: sync.data.config.share !== "disabled",
       slash: {
         name: "share",
@@ -392,10 +392,10 @@ export function Session() {
       },
     },
     {
-      title: "Rename session",
+      title: t("tui.renameSession"),
       value: "session.rename",
       keybind: "session_rename",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "rename",
       },
@@ -404,10 +404,10 @@ export function Session() {
       },
     },
     {
-      title: "Jump to message",
+      title: t("tui.jumpToMessage"),
       value: "session.timeline",
       keybind: "session_timeline",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "timeline",
       },
@@ -427,10 +427,10 @@ export function Session() {
       },
     },
     {
-      title: "Fork from message",
+      title: t("tui.forkFromMessage"),
       value: "session.fork",
       keybind: "session_fork",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "fork",
       },
@@ -449,10 +449,10 @@ export function Session() {
       },
     },
     {
-      title: "Compact session",
+      title: t("tui.compactSession"),
       value: "session.compact",
       keybind: "session_compact",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "compact",
         aliases: ["summarize"],
@@ -476,10 +476,10 @@ export function Session() {
       },
     },
     {
-      title: "Unshare session",
+      title: t("tui.unshareSession"),
       value: "session.unshare",
       keybind: "session_unshare",
-      category: "Session",
+      category: t("tui.categorySession"),
       enabled: !!session()?.share?.url,
       slash: {
         name: "unshare",
@@ -500,10 +500,10 @@ export function Session() {
       },
     },
     {
-      title: "Undo previous message",
+      title: t("tui.undoPreviousMessage"),
       value: "session.undo",
       keybind: "messages_undo",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "undo",
       },
@@ -538,10 +538,10 @@ export function Session() {
       },
     },
     {
-      title: "Redo",
+      title: t("tui.redo"),
       value: "session.redo",
       keybind: "messages_redo",
-      category: "Session",
+      category: t("tui.categorySession"),
       enabled: !!session()?.revert?.messageID,
       slash: {
         name: "redo",
@@ -568,7 +568,7 @@ export function Session() {
       title: sidebarVisible() ? "Hide sidebar" : "Show sidebar",
       value: "session.sidebar.toggle",
       keybind: "sidebar_toggle",
-      category: "Session",
+      category: t("tui.categorySession"),
       onSelect: (dialog) => {
         batch(() => {
           const isVisible = sidebarVisible()
@@ -582,7 +582,7 @@ export function Session() {
       title: conceal() ? "Disable code concealment" : "Enable code concealment",
       value: "session.toggle.conceal",
       keybind: "messages_toggle_conceal" as any,
-      category: "Session",
+      category: t("tui.categorySession"),
       onSelect: (dialog) => {
         setConceal((prev) => !prev)
         dialog.clear()
@@ -591,7 +591,7 @@ export function Session() {
     {
       title: showTimestamps() ? "Hide timestamps" : "Show timestamps",
       value: "session.toggle.timestamps",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "timestamps",
         aliases: ["toggle-timestamps"],
@@ -605,7 +605,7 @@ export function Session() {
       title: showThinking() ? "Hide thinking" : "Show thinking",
       value: "session.toggle.thinking",
       keybind: "display_thinking",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "thinking",
         aliases: ["toggle-thinking"],
@@ -619,17 +619,17 @@ export function Session() {
       title: showDetails() ? "Hide tool details" : "Show tool details",
       value: "session.toggle.actions",
       keybind: "tool_details",
-      category: "Session",
+      category: t("tui.categorySession"),
       onSelect: (dialog) => {
         setShowDetails((prev) => !prev)
         dialog.clear()
       },
     },
     {
-      title: "Toggle session scrollbar",
+      title: t("tui.toggleSessionScrollbar"),
       value: "session.toggle.scrollbar",
       keybind: "scrollbar_toggle",
-      category: "Session",
+      category: t("tui.categorySession"),
       onSelect: (dialog) => {
         setShowScrollbar((prev) => !prev)
         dialog.clear()
@@ -638,17 +638,17 @@ export function Session() {
     {
       title: showGenericToolOutput() ? "Hide generic tool output" : "Show generic tool output",
       value: "session.toggle.generic_tool_output",
-      category: "Session",
+      category: t("tui.categorySession"),
       onSelect: (dialog) => {
         setShowGenericToolOutput((prev) => !prev)
         dialog.clear()
       },
     },
     {
-      title: "Page up",
+      title: t("tui.pageUp"),
       value: "session.page.up",
       keybind: "messages_page_up",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: (dialog) => {
         scroll.scrollBy(-scroll.height / 2)
@@ -656,10 +656,10 @@ export function Session() {
       },
     },
     {
-      title: "Page down",
+      title: t("tui.pageDown"),
       value: "session.page.down",
       keybind: "messages_page_down",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: (dialog) => {
         scroll.scrollBy(scroll.height / 2)
@@ -667,10 +667,10 @@ export function Session() {
       },
     },
     {
-      title: "Line up",
+      title: t("tui.lineUp"),
       value: "session.line.up",
       keybind: "messages_line_up",
-      category: "Session",
+      category: t("tui.categorySession"),
       disabled: true,
       onSelect: (dialog) => {
         scroll.scrollBy(-1)
@@ -678,10 +678,10 @@ export function Session() {
       },
     },
     {
-      title: "Line down",
+      title: t("tui.lineDown"),
       value: "session.line.down",
       keybind: "messages_line_down",
-      category: "Session",
+      category: t("tui.categorySession"),
       disabled: true,
       onSelect: (dialog) => {
         scroll.scrollBy(1)
@@ -689,10 +689,10 @@ export function Session() {
       },
     },
     {
-      title: "Half page up",
+      title: t("tui.halfPageUp"),
       value: "session.half.page.up",
       keybind: "messages_half_page_up",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: (dialog) => {
         scroll.scrollBy(-scroll.height / 4)
@@ -700,10 +700,10 @@ export function Session() {
       },
     },
     {
-      title: "Half page down",
+      title: t("tui.halfPageDown"),
       value: "session.half.page.down",
       keybind: "messages_half_page_down",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: (dialog) => {
         scroll.scrollBy(scroll.height / 4)
@@ -711,10 +711,10 @@ export function Session() {
       },
     },
     {
-      title: "First message",
+      title: t("tui.firstMessage"),
       value: "session.first",
       keybind: "messages_first",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: (dialog) => {
         scroll.scrollTo(0)
@@ -722,10 +722,10 @@ export function Session() {
       },
     },
     {
-      title: "Last message",
+      title: t("tui.lastMessage"),
       value: "session.last",
       keybind: "messages_last",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: (dialog) => {
         scroll.scrollTo(scroll.scrollHeight)
@@ -733,10 +733,10 @@ export function Session() {
       },
     },
     {
-      title: "Jump to last user message",
+      title: t("tui.jumpToLastUserMessage"),
       value: "session.messages_last_user",
       keybind: "messages_last_user",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: () => {
         const messages = sync.data.message[route.sessionID]
@@ -765,26 +765,26 @@ export function Session() {
       },
     },
     {
-      title: "Next message",
+      title: t("tui.nextMessage"),
       value: "session.message.next",
       keybind: "messages_next",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: (dialog) => scrollToMessage("next", dialog),
     },
     {
-      title: "Previous message",
+      title: t("tui.previousMessage"),
       value: "session.message.previous",
       keybind: "messages_previous",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: (dialog) => scrollToMessage("prev", dialog),
     },
     {
-      title: "Copy last assistant message",
+      title: t("tui.copyLastAssistantMessage"),
       value: "messages.copy",
       keybind: "messages_copy",
-      category: "Session",
+      category: t("tui.categorySession"),
       onSelect: (dialog) => {
         const revertID = session()?.revert?.messageID
         const lastAssistantMessage = messages().findLast(
@@ -824,9 +824,9 @@ export function Session() {
       },
     },
     {
-      title: "Copy session transcript",
+      title: t("tui.copySessionTranscript"),
       value: "session.copy",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "copy",
       },
@@ -853,10 +853,10 @@ export function Session() {
       },
     },
     {
-      title: "Export session transcript",
+      title: t("tui.exportSessionTranscript"),
       value: "session.export",
       keybind: "session_export",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "export",
       },
@@ -914,10 +914,10 @@ export function Session() {
       },
     },
     {
-      title: "Go to child session",
+      title: t("tui.goToChildSession"),
       value: "session.child.first",
       keybind: "session_child_first",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       onSelect: (dialog) => {
         moveFirstChild()
@@ -925,10 +925,10 @@ export function Session() {
       },
     },
     {
-      title: "Go to parent session",
+      title: t("tui.goToParentSession"),
       value: "session.parent",
       keybind: "session_parent",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       enabled: !!session()?.parentID,
       onSelect: childSessionHandler((dialog) => {
@@ -943,10 +943,10 @@ export function Session() {
       }),
     },
     {
-      title: "Next child session",
+      title: t("tui.nextChildSession"),
       value: "session.child.next",
       keybind: "session_child_cycle",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       enabled: !!session()?.parentID,
       onSelect: childSessionHandler((dialog) => {
@@ -955,10 +955,10 @@ export function Session() {
       }),
     },
     {
-      title: "Previous child session",
+      title: t("tui.previousChildSession"),
       value: "session.child.previous",
       keybind: "session_child_cycle_reverse",
-      category: "Session",
+      category: t("tui.categorySession"),
       hidden: true,
       enabled: !!session()?.parentID,
       onSelect: childSessionHandler((dialog) => {
