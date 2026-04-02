@@ -442,10 +442,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
   const connected = useConnected()
   command.register(() => [
     {
-      title: "Switch session",
+      title: t("tui.switchSession"),
       value: "session.list",
       keybind: "session_list",
-      category: "Session",
+      category: t("tui.categorySession"),
       suggested: sync.data.session.length > 0,
       slash: {
         name: "sessions",
@@ -458,9 +458,9 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
     ...(Flag.OPENCODE_EXPERIMENTAL_WORKSPACES
       ? [
           {
-            title: "Manage workspaces",
+            title: t("tui.manageWorkspaces"),
             value: "workspace.list",
-            category: "Workspace",
+            category: t("tui.categoryWorkspace"),
             suggested: true,
             slash: {
               name: "workspaces",
@@ -476,7 +476,7 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       suggested: route.data.type === "session",
       value: "session.new",
       keybind: "session_new",
-      category: "Session",
+      category: t("tui.categorySession"),
       slash: {
         name: "new",
         aliases: ["clear"],
@@ -496,11 +496,11 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Switch model",
+      title: t("tui.switchModel"),
       value: "model.list",
       keybind: "model_list",
       suggested: true,
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       slash: {
         name: "models",
       },
@@ -509,50 +509,50 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Model cycle",
+      title: t("tui.modelCycle"),
       value: "model.cycle_recent",
       keybind: "model_cycle_recent",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.model.cycle(1)
       },
     },
     {
-      title: "Model cycle reverse",
+      title: t("tui.modelCycleReverse"),
       value: "model.cycle_recent_reverse",
       keybind: "model_cycle_recent_reverse",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.model.cycle(-1)
       },
     },
     {
-      title: "Favorite cycle",
+      title: t("tui.favoriteCycle"),
       value: "model.cycle_favorite",
       keybind: "model_cycle_favorite",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.model.cycleFavorite(1)
       },
     },
     {
-      title: "Favorite cycle reverse",
+      title: t("tui.favoriteCycleReverse"),
       value: "model.cycle_favorite_reverse",
       keybind: "model_cycle_favorite_reverse",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: true,
       onSelect: () => {
         local.model.cycleFavorite(-1)
       },
     },
     {
-      title: "Switch agent",
+      title: t("tui.switchAgent"),
       value: "agent.list",
       keybind: "agent_list",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       slash: {
         name: "agents",
       },
@@ -561,9 +561,9 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Toggle MCPs",
+      title: t("tui.toggleMCPs"),
       value: "mcp.list",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       slash: {
         name: "mcps",
       },
@@ -582,18 +582,18 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Variant cycle",
+      title: t("tui.cycleVariant"),
       value: "variant.cycle",
       keybind: "variant_cycle",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       onSelect: () => {
         local.model.variant.cycle()
       },
     },
     {
-      title: "Switch model variant",
+      title: t("tui.switchModelVariant"),
       value: "variant.list",
-      category: "Agent",
+      category: t("tui.categoryAgent"),
       hidden: local.model.variant.list().length === 0,
       slash: {
         name: "variants",
@@ -613,7 +613,7 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       },
     },
     {
-      title: "Connect provider",
+      title: t("tui.connectProvider"),
       value: "provider.connect",
       suggested: !connected(),
       slash: {
@@ -622,10 +622,10 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
       onSelect: () => {
         dialog.replace(() => <DialogProviderList />)
       },
-      category: "Provider",
+      category: t("tui.categoryProvider"),
     },
     {
-      title: "View status",
+      title: t("tui.viewStatus"),
       keybind: "status_view",
       value: "opencode.status",
       slash: {
