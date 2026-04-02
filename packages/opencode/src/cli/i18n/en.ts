@@ -305,6 +305,7 @@ export const en = {
   "tui.tipSuspend": "Press {highlight}Ctrl+Z{/highlight} to suspend the terminal and return to your shell",
   "tui.skills": "Skills",
   "tui.prompt": "Prompt",
+  "tui.tip": "Tip",
 
   // Dialog
   "dialog.apiKey": "API key",

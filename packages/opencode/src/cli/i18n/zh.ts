@@ -293,6 +293,7 @@ export const zh: Dict = {
   "tui.tipSuspend": "按 {highlight}Ctrl+Z{/highlight} 挂起终端并返回 shell",
   "tui.skills": "技能",
   "tui.prompt": "提示",
+  "tui.tip": "小贴士",
 
   // Dialog
   "dialog.apiKey": "API 密钥",
