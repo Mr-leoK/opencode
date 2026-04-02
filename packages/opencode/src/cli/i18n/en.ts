@@ -303,6 +303,8 @@ export const en = {
   "tui.tipHelp": "Run {highlight}/help{/highlight} or {highlight}Ctrl+X H{/highlight} to show the help dialog",
   "tui.tipRename": "Use {highlight}/rename{/highlight} to rename the current session",
   "tui.tipSuspend": "Press {highlight}Ctrl+Z{/highlight} to suspend the terminal and return to your shell",
+  "tui.skills": "Skills",
+  "tui.prompt": "Prompt",
 
   // Dialog
   "dialog.apiKey": "API key",

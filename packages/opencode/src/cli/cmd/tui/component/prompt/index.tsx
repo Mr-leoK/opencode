@@ -219,7 +219,7 @@ export function Prompt(props: PromptProps) {
       {
         title: "Clear prompt",
         value: "prompt.clear",
-        category: "Prompt",
+        category: t("tui.prompt"),
         hidden: true,
         onSelect: (dialog) => {
           input.extmarks.clear()
@@ -231,7 +231,7 @@ export function Prompt(props: PromptProps) {
         title: "Submit prompt",
         value: "prompt.submit",
         keybind: "input_submit",
-        category: "Prompt",
+        category: t("tui.prompt"),
         hidden: true,
         onSelect: (dialog) => {
           if (!input.focused) return
@@ -243,7 +243,7 @@ export function Prompt(props: PromptProps) {
         title: "Paste",
         value: "prompt.paste",
         keybind: "input_paste",
-        category: "Prompt",
+        category: t("tui.prompt"),
         hidden: true,
         onSelect: async () => {
           const content = await Clipboard.read()
@@ -376,9 +376,9 @@ export function Prompt(props: PromptProps) {
         },
       },
       {
-        title: "Skills",
+        title: t("tui.skills"),
         value: "prompt.skills",
-        category: "Prompt",
+        category: t("tui.prompt"),
         slash: {
           name: "skills",
         },
@@ -534,7 +534,7 @@ export function Prompt(props: PromptProps) {
     {
       title: "Stash prompt",
       value: "prompt.stash",
-      category: "Prompt",
+      category: t("tui.prompt"),
       enabled: !!store.prompt.input,
       onSelect: (dialog) => {
         if (!store.prompt.input) return
@@ -552,7 +552,7 @@ export function Prompt(props: PromptProps) {
     {
       title: "Stash pop",
       value: "prompt.stash.pop",
-      category: "Prompt",
+      category: t("tui.prompt"),
       enabled: stash.list().length > 0,
       onSelect: (dialog) => {
         const entry = stash.pop()
@@ -568,7 +568,7 @@ export function Prompt(props: PromptProps) {
     {
       title: "Stash list",
       value: "prompt.stash.list",
-      category: "Prompt",
+      category: t("tui.prompt"),
       enabled: stash.list().length > 0,
       onSelect: (dialog) => {
         dialog.replace(() => (

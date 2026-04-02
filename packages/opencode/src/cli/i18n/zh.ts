@@ -291,6 +291,8 @@ export const zh: Dict = {
   "tui.tipHelp": "运行 {highlight}/help{/highlight} 或按 {highlight}Ctrl+X H{/highlight} 显示帮助对话框",
   "tui.tipRename": "使用 {highlight}/rename{/highlight} 重命名当前会话",
   "tui.tipSuspend": "按 {highlight}Ctrl+Z{/highlight} 挂起终端并返回 shell",
+  "tui.skills": "技能",
+  "tui.prompt": "提示",
 
   // Dialog
   "dialog.apiKey": "API 密钥",
