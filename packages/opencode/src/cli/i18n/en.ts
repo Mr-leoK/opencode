@@ -191,6 +191,118 @@ export const en = {
   "tui.goToParentSession": "Go to parent session",
   "tui.nextChildSession": "Next child session",
   "tui.previousChildSession": "Previous child session",
+  "tui.tipAtFile": "Type {highlight}@{/highlight} followed by a filename to fuzzy search and attach files",
+  "tui.tipShellCommand":
+    "Start a message with {highlight}!{/highlight} to run shell commands directly (e.g., {highlight}!ls -la{/highlight})",
+  "tui.tipTabAgent": "Press {highlight}Tab{/highlight} to cycle between Build and Plan agents",
+  "tui.tipUndo": "Use {highlight}/undo{/highlight} to revert the last message and file changes",
+  "tui.tipRedo": "Use {highlight}/redo{/highlight} to restore previously undone messages and file changes",
+  "tui.tipShare": "Run {highlight}/share{/highlight} to create a public link to your conversation at opencode.ai",
+  "tui.tipDragDrop": "Drag and drop images into the terminal to add them as context",
+  "tui.tipPasteImage": "Press {highlight}Ctrl+V{/highlight} to paste images from your clipboard into the prompt",
+  "tui.tipEditor":
+    "Press {highlight}Ctrl+X E{/highlight} or {highlight}/editor{/highlight} to compose messages in your external editor",
+  "tui.tipThemes":
+    "Use {highlight}/themes{/highlight} or {highlight}Ctrl+X T{/highlight} to switch between built-in themes",
+  "tui.tipInit": "Run {highlight}/init{/highlight} to auto-generate project rules based on your codebase",
+  "tui.tipModels":
+    "Run {highlight}/models{/highlight} or {highlight}Ctrl+X M{/highlight} to see and switch between available AI models",
+  "tui.tipNew":
+    "Press {highlight}Ctrl+X N{/highlight} or {highlight}/new{/highlight} to start a fresh conversation session",
+  "tui.tipSessions":
+    "Use {highlight}/sessions{/highlight} or {highlight}Ctrl+X L{/highlight} to list and continue previous conversations",
+  "tui.tipCompact": "Run {highlight}/compact{/highlight} to summarize long sessions near context limits",
+  "tui.tipExport":
+    "Press {highlight}Ctrl+X X{/highlight} or {highlight}/export{/highlight} to save the conversation as Markdown",
+  "tui.tipCopyMessage": "Press {highlight}Ctrl+X Y{/highlight} to copy the assistant's last message to clipboard",
+  "tui.tipCommandPalette": "Press {highlight}Ctrl+P{/highlight} to see all available actions and commands",
+  "tui.tipConnect": "Run {highlight}/connect{/highlight} to add API keys for 75+ supported LLM providers",
+  "tui.tipLeaderKey": "The leader key is {highlight}Ctrl+X{/highlight}; combine with other keys for quick actions",
+  "tui.tipF2Model": "Press {highlight}F2{/highlight} to quickly switch between recently used models",
+  "tui.tipSidebar": "Press {highlight}Ctrl+X B{/highlight} to show/hide the sidebar panel",
+  "tui.tipPageNav":
+    "Use {highlight}PageUp{/highlight}/{highlight}PageDown{/highlight} to navigate through conversation history",
+  "tui.tipJumpStart":
+    "Press {highlight}Ctrl+G{/highlight} or {highlight}Home{/highlight} to jump to the beginning of the conversation",
+  "tui.tipJumpEnd":
+    "Press {highlight}Ctrl+Alt+G{/highlight} or {highlight}End{/highlight} to jump to the most recent message",
+  "tui.tipNewline":
+    "Press {highlight}Shift+Enter{/highlight} or {highlight}Ctrl+J{/highlight} to add newlines in your prompt",
+  "tui.tipClearInput": "Press {highlight}Ctrl+C{/highlight} when typing to clear the input field",
+  "tui.tipStopResponse": "Press {highlight}Escape{/highlight} to stop the AI mid-response",
+  "tui.tipPlanAgent": "Switch to {highlight}Plan{/highlight} agent to get suggestions without making actual changes",
+  "tui.tipSubagent": "Use {highlight}@agent-name{/highlight} in prompts to invoke specialized subagents",
+  "tui.tipSessionNav": "Press {highlight}Ctrl+X Right/Left{/highlight} to cycle through parent and child sessions",
+  "tui.tipConfigFiles":
+    "Create {highlight}opencode.json{/highlight} for server settings and {highlight}tui.json{/highlight} for TUI settings",
+  "tui.tipGlobalConfig": "Place TUI settings in {highlight}~/.config/opencode/tui.json{/highlight} for global config",
+  "tui.tipSchema": "Add {highlight}$schema{/highlight} to your config for autocomplete in your editor",
+  "tui.tipDefaultModel": "Configure {highlight}model{/highlight} in config to set your default model",
+  "tui.tipKeybind":
+    "Override any keybind in {highlight}tui.json{/highlight} via the {highlight}keybinds{/highlight} section",
+  "tui.tipDisableKeybind": "Set any keybind to {highlight}none{/highlight} to disable it completely",
+  "tui.tipMcpConfig": "Configure local or remote MCP servers in the {highlight}mcp{/highlight} config section",
+  "tui.tipMcpOAuth": "OpenCode auto-handles OAuth for remote MCP servers requiring auth",
+  "tui.tipCustomCommand":
+    "Add {highlight}.md{/highlight} files to {highlight}.opencode/command/{/highlight} to define reusable custom prompts",
+  "tui.tipCommandArgs":
+    "Use {highlight}$ARGUMENTS{/highlight}, {highlight}$1{/highlight}, {highlight}$2{/highlight} in custom commands for dynamic input",
+  "tui.tipShellOutput": "Use backticks in commands to inject shell output (e.g., {highlight}`git status`{/highlight})",
+  "tui.tipCustomAgent":
+    "Add {highlight}.md{/highlight} files to {highlight}.opencode/agent{/highlight} for specialized AI personas",
+  "tui.tipAgentPerms":
+    "Configure per-agent permissions for {highlight}edit{/highlight}, {highlight}bash{/highlight}, and {highlight}webfetch{/highlight} tools",
+  "tui.tipAutoFormat": "OpenCode auto-formats files using prettier, gofmt, ruff, and more",
+  "tui.tipCustomFormatter": "Define custom formatter commands with file extensions in config",
+  "tui.tipLsp": "OpenCode uses LSP servers for intelligent code analysis",
+  "tui.tipCustomTool":
+    "Create {highlight}.ts{/highlight} files in {highlight}.opencode/tools/{/highlight} to define new LLM tools",
+  "tui.tipToolScript": "Tool definitions can invoke scripts written in Python, Go, etc",
+  "tui.tipCustomPlugin":
+    "Add {highlight}.ts{/highlight} files to {highlight}.opencode/plugin/{/highlight} for event hooks",
+  "tui.tipPluginNotify": "Use plugins to send OS notifications when sessions complete",
+  "tui.tipPluginSensitive": "Create a plugin to prevent OpenCode from reading sensitive files",
+  "tui.tipNonInteractive": "Use {highlight}opencode run{/highlight} for non-interactive scripting",
+  "tui.tipContinueSession": "Use {highlight}opencode --continue{/highlight} to resume the last session",
+  "tui.tipAttachFile": "Use {highlight}opencode run -f file.ts{/highlight} to attach files via CLI",
+  "tui.tipJsonOutput": "Use {highlight}--format json{/highlight} for machine-readable output in scripts",
+  "tui.tipServe": "Run {highlight}opencode serve{/highlight} for headless API access to OpenCode",
+  "tui.tipAttachServer": "Use {highlight}opencode run --attach{/highlight} to connect to a running server",
+  "tui.tipUpgrade": "Run {highlight}opencode upgrade{/highlight} to update to the latest version",
+  "tui.tipAuthList": "Run {highlight}opencode auth list{/highlight} to see all configured providers",
+  "tui.tipAgentCreate": "Run {highlight}opencode agent create{/highlight} for guided agent creation",
+  "tui.tipOpencodeCmd": "Use {highlight}/opencode{/highlight} in GitHub issues/PRs to trigger AI actions",
+  "tui.tipGithubInstall": "Run {highlight}opencode github install{/highlight} to set up the GitHub workflow",
+  "tui.tipGithubFix": "Comment {highlight}/opencode fix this{/highlight} on issues to auto-create PRs",
+  "tui.tipCodeReview": "Comment {highlight}/oc{/highlight} on PR code lines for targeted code reviews",
+  "tui.tipThemeFile": "Create JSON theme files in {highlight}.opencode/themes/{/highlight} directory",
+  "tui.tipThemeDarkLight": "Themes support dark/light variants for both modes",
+  "tui.tipAnsiColors": "Reference ANSI colors 0-255 in custom themes",
+  "tui.tipEnvVar": "Use {highlight}{env:VAR_NAME}{/highlight} syntax to reference environment variables in config",
+  "tui.tipFileInclude": "Use {highlight}{file:path}{/highlight} to include file contents in config values",
+  "tui.tipInstructions": "Use {highlight}instructions{/highlight} in config to load additional rules files",
+  "tui.tipTemperature": "Set agent {highlight}temperature{/highlight} from 0.0 (focused) to 1.0 (creative)",
+  "tui.tipSteps": "Configure {highlight}steps{/highlight} to limit agentic iterations per request",
+  "tui.tipToolOverride": "Override global tool settings per agent configuration",
+  "tui.tipUnshare": "Run {highlight}/unshare{/highlight} to remove a session from public access",
+  "tui.tipDoomLoop": "Permission {highlight}doom_loop{/highlight} prevents infinite tool call loops",
+  "tui.tipExtDir": "Permission {highlight}external_directory{/highlight} protects files outside project",
+  "tui.tipDebugConfig": "Run {highlight}opencode debug config{/highlight} to troubleshoot configuration",
+  "tui.tipPrintLogs": "Use {highlight}--print-logs{/highlight} flag to see detailed logs in stderr",
+  "tui.tipTimeline":
+    "Press {highlight}Ctrl+X G{/highlight} or {highlight}/timeline{/highlight} to jump to specific messages",
+  "tui.tipCodeBlock": "Press {highlight}Ctrl+X H{/highlight} to toggle code block visibility in messages",
+  "tui.tipStatus": "Press {highlight}Ctrl+X S{/highlight} or {highlight}/status{/highlight} to see system status info",
+  "tui.tipScrollAccel":
+    "Enable {highlight}scroll_acceleration{/highlight} in {highlight}tui.json{/highlight} for smooth macOS-style scrolling",
+  "tui.tipUsernameDisplay": "Toggle username display in chat via command palette ({highlight}Ctrl+P{/highlight})",
+  "tui.tipDocker": "Run {highlight}docker run -it --rm ghcr.io/anomalyco/opencode{/highlight} for containerized use",
+  "tui.tipConnectZen": "Use {highlight}/connect{/highlight} with OpenCode Zen for curated, tested models",
+  "tui.tipAgentsMd": "Commit your project's {highlight}AGENTS.md{/highlight} file to Git for team sharing",
+  "tui.tipReview": "Use {highlight}/review{/highlight} to review uncommitted changes, branches, or PRs",
+  "tui.tipHelp": "Run {highlight}/help{/highlight} or {highlight}Ctrl+X H{/highlight} to show the help dialog",
+  "tui.tipRename": "Use {highlight}/rename{/highlight} to rename the current session",
+  "tui.tipSuspend": "Press {highlight}Ctrl+Z{/highlight} to suspend the terminal and return to your shell",
 
   // Dialog
   "dialog.apiKey": "API key",
